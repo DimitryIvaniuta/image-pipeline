@@ -1,0 +1,49 @@
+plugins {
+    id 'org.springframework.boot' version '3.4.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '23'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // AWS SDK v2 dependencies
+    implementation 'software.amazon.awssdk:s3:2.31.18'
+    implementation 'software.amazon.awssdk:dynamodb:2.31.18'
+    implementation 'software.amazon.awssdk:sns:2.31.18'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compileOnly("org.projectlombok:lombok:1.18.36")
+    annotationProcessor("org.projectlombok:lombok:1.18.36")
+    testCompileOnly("org.projectlombok:lombok:1.18.36")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.36")
+
+    testImplementation 'org.junit.platform:junit-platform-suite-api:1.12.0'
+    testImplementation 'org.junit.platform:junit-platform-suite:1.12.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.testcontainers:junit-jupiter:1.20.6'
+    testImplementation 'org.testcontainers:postgresql:1.20.6'
+}
+
+
+testing {
+    suites {
+        // Configure the built-in test suite
+        test {
+            // Use JUnit Jupiter test framework
+            useJUnitJupiter('5.11.1')
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

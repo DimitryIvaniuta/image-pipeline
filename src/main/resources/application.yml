@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: image-pipeline
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8080
+
+# AWS SDK and custom configuration properties
+aws:
+  region: us-east-1
+  s3:
+    bucket: your-s3-bucket-name
+  dynamodb:
+    table: ImageMetadata
+  sns:
+    topic-arn: your-sns-topic-arn
+
+logging:
+  level:
+    root: INFO
+    com.example.imagepipeline: DEBUG
